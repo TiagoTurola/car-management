@@ -2,7 +2,7 @@ import { instance } from "./axios-instance";
 
 export interface IBrandInfo {
   id?: number;
-  nome: string;
+  name: string;
 }
 
 export async function getBrand() {

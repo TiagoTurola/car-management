@@ -23,20 +23,20 @@ export async function getCar() {
 
 export async function saveCar(carInfo: IRegisterCar) {
   const { data } = await instance.post("/carros", carInfo).catch((error) => {
-    throw new Error(error.message);
+    throw error;
   });
   return data;
 }
 
 export async function deleteCar(id: number) {
   await instance.delete(`/carros/${id}`).catch((error) => {
-    throw new Error(error.message);
+    throw error;
   });
 }
 
 export async function updateCar(id: number) {
   const { data } = await instance.patch(`/carros/${id}`).catch((error) => {
-    throw new Error(error.message);
+    throw error;
   });
   return data;
 }

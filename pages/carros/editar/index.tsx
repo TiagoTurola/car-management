@@ -3,7 +3,7 @@ import Header from "../../../components/header";
 import Conteudo from "../../../components/novo-carro";
 import { IRegisterCar, saveCar } from "../../api/car";
 
-const Novo: NextPage = () => {
+const Editar: NextPage = () => {
   async function salvarCarro(data: IRegisterCar) {
     await saveCar(data)
       .then(() => {
@@ -26,4 +26,4 @@ const Novo: NextPage = () => {
   );
 };
 
-export default Novo;
+export default Editar;

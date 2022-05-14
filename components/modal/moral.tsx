@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import React from 'react';
-import {  } from './styles';
+//import {  } from './styles';
 
-const ListaMarca = () => {
+const Modal = () => {
     return (
         <>
         </>
     );
 };
 
-export default ListaMarca;
+export default Modal;

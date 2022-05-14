@@ -43,13 +43,18 @@ const TabelaCarro = () => {
                 <Td>{car.cor}</Td>
                 <Td>{car.marca}</Td>
                 <Td>
-                  <Button>Editar</Button>
-                  <Link href="/carros">
-                    <Button onClick={() => {
-                      deleteCarList(car.id)
-                      getCarList()
-                      }}>Excluir</Button>
-                  </Link>
+                <Button>
+                <Link href="/carros/editar">Editar</Link>
+                </Button>
+                  
+                    <Button
+                      onClick={() => {
+                        deleteCarList(car.id);
+                        getCarList();
+                      }}
+                    >
+                      Excluir
+                    </Button>
                 </Td>
               </Tr>
             </>

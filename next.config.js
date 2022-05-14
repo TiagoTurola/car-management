@@ -4,11 +4,11 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: '/carros',
-        destination: '/',
+        source: "/carros",
+        destination: "/",
       },
-    ]
+    ];
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
