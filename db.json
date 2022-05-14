@@ -1,0 +1,10 @@
+{
+  "carros": [
+    {
+      "id": 1,
+      "placa": "EXT2031",
+      "cor": "preto",
+      "marca": "Fiat"
+    }
+  ]
+}

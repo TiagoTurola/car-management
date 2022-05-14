@@ -2,28 +2,26 @@ import Link from "next/link";
 import React from "react";
 import { Table, Thead, Tr, Th, Tbody, Td, Button } from "./styles";
 
-const Tabela = () => {
+const TabelaMarca = () => {
   return (
     <Table>
       <Thead>
         <Tr>
-          <Th>Placa</Th>
-          <Th>Cor</Th>
           <Th>Marca</Th>
           <Th>Ações</Th>
         </Tr>
+      </ Thead>
+      <Tbody>
         <Tr>
-          <Td>EXT-1801</Td>
-          <Td>Azul</Td>
           <Td>Fiat</Td>
           <Td>
               <Button>Editar</Button>
               <Button>Excluir</Button>
           </Td>
         </Tr>
-      </Thead>
+      </Tbody>
     </Table>
   );
 };
 
-export default Tabela;
+export default TabelaMarca;
