@@ -1,11 +1,11 @@
 import type { NextPage } from "next";
 import Header from "../../../components/header";
-import Conteudo from "../../../components/novo-carro";
-import { IRegisterCar, saveCar } from "../../api/car";
+import Conteudo from "../../../components/conteudo-editar-carro";
+import { IRegisterCar, updateCar } from "../../api/car";
 
 const Editar: NextPage = () => {
-  async function salvarCarro(data: IRegisterCar) {
-    await saveCar(data)
+  async function atualizarCarro(id: number, data: IRegisterCar) {
+    await updateCar(id, data)
       .then(() => {
         console.log("ok");
       })
@@ -18,8 +18,8 @@ const Editar: NextPage = () => {
     <>
       <Header />
       <Conteudo
-        enviar={(data) => {
-          salvarCarro(data);
+        enviar={(id, data) => {
+          atualizarCarro(id, data);
         }}
       />
     </>

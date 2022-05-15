@@ -26,8 +26,17 @@ export async function deleteBrand(id: number) {
 }
 
 export async function updateBrand(id: number, brandInfo: IBrandInfo) {
-  const { data } = await instance.patch(`/marcas/${id}`, brandInfo).catch((error) => {
-    throw new Error(error.message);
+  const { data } = await instance
+    .patch(`/marcas/${id}`, brandInfo)
+    .catch((error) => {
+      throw new Error(error.message);
+    });
+  return data;
+}
+
+export async function getBrandById(id: number) {
+  const { data } = await instance.get(`/marcas/${id}`).catch((error) => {
+    throw error;
   });
   return data;
 }

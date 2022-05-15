@@ -34,8 +34,17 @@ export async function deleteCar(id: number) {
   });
 }
 
-export async function updateCar(id: number) {
-  const { data } = await instance.patch(`/carros/${id}`).catch((error) => {
+export async function updateCar(id: number, carro: IRegisterCar) {
+  const { data } = await instance
+    .patch(`/carros/${id}`, carro)
+    .catch((error) => {
+      throw error;
+    });
+  return data;
+}
+
+export async function getCarById(id: number) {
+  const { data } = await instance.get(`/carros/${id}`).catch((error) => {
     throw error;
   });
   return data;

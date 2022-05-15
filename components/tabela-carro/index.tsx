@@ -43,10 +43,9 @@ const TabelaCarro = () => {
                 <Td>{car.cor}</Td>
                 <Td>{car.marca}</Td>
                 <Td>
-                <Button>
-                <Link href="/carros/editar">Editar</Link>
-                </Button>
-                  
+                <Link href={`/carros/editar/${car.id}`}>
+                  <Button>Editar</Button>
+                </Link>
                     <Button
                       onClick={() => {
                         deleteCarList(car.id);

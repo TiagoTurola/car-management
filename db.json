@@ -2,9 +2,15 @@
   "carros": [
     {
       "id": 1,
-      "placa": "EXT2031",
-      "cor": "preto",
+      "placa": "EXT1809",
+      "cor": "Azul",
       "marca": "Fiat"
+    },
+    {
+      "placa": "VRT5487",
+      "marca": "Fiat",
+      "cor": "Roxo",
+      "id": 2
     }
   ],
   "marcas": [

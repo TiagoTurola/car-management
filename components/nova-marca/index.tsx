@@ -16,10 +16,10 @@ const NovaMarca = () => {
       </InputContent>
       <Div>
         <Button>
-          <Link href="/carros">Salvar</Link>
+          <Link href="/marcas">Salvar</Link>
         </Button>
         <Button>
-          <Link href="/carros">Voltar</Link>
+          <Link href="/marcas">Voltar</Link>
         </Button>
       </Div>
     </Container>
