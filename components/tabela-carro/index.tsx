@@ -3,8 +3,22 @@ import React, { useEffect, useState } from "react";
 import { deleteCar, getCar, ICarInfo } from "../../pages/api/car";
 import { Table, Thead, Tr, Th, Tbody, Td, Button } from "./styles";
 
-const TabelaCarro = () => {
-  const [carList, setCarList] = useState<ICarInfo[]>([]);
+interface ITableCarProps {
+  filterPlate: string;
+  filterBrand: string;
+}
+
+const TabelaCarro = ({ filterPlate, filterBrand }: ITableCarProps) => {
+  let [carList, setCarList] = useState<ICarInfo[]>([]);
+  if (filterPlate) {
+    carList = carList.filter((car) =>
+      car.placa.toLowerCase().includes(filterPlate.toLowerCase())
+    );
+  } else if (filterBrand) {
+    carList = carList.filter((car) =>
+      car.marca.toLowerCase().includes(filterBrand.toLowerCase())
+    );
+  }
 
   async function getCarList() {
     await getCar()
@@ -43,17 +57,17 @@ const TabelaCarro = () => {
                 <Td>{car.cor}</Td>
                 <Td>{car.marca}</Td>
                 <Td>
-                <Link href={`/carros/editar/${car.id}`}>
-                  <Button>Editar</Button>
-                </Link>
-                    <Button
-                      onClick={() => {
-                        deleteCarList(car.id);
-                        getCarList();
-                      }}
-                    >
-                      Excluir
-                    </Button>
+                  <Link href={`/carros/editar/${car.id}`}>
+                    <Button>Editar</Button>
+                  </Link>
+                  <Button
+                    onClick={() => {
+                      deleteCarList(car.id);
+                      getCarList();
+                    }}
+                  >
+                    Excluir
+                  </Button>
                 </Td>
               </Tr>
             </>
