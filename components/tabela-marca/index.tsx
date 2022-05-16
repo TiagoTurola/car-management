@@ -44,7 +44,7 @@ const TabelaMarca = () => {
                   </Link>
                   <Button
                     onClick={() => {
-                      deleteBrandList(brand.id);
+                      deleteBrandList(Number(brand.id));
                       getBrandList();
                     }}
                   >

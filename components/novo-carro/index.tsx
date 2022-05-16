@@ -48,7 +48,7 @@ const NovoCarro = ({ enviar }: INewCarProps) => {
           id=""
           onChange={(data) => setMarca(data.currentTarget.value)}
         >
-          <option value="Selecione uma marca">Selecione uma marca</option>
+          <option value="Selecione uma marca"></option>
 
           {listaMarca.map((marca) => {
             return (

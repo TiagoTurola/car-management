@@ -11,7 +11,7 @@ interface IEditCarProps {
 
 const EditarCarro = ({ enviar }: IEditCarProps) => {
   const router = useRouter();
-  const { ['editar-carro']: id } = router.query;
+  const { ["editar-carro"]: id } = router.query;
   const [carro, setCarro] = useState<ICarInfo>();
   const [placa, setPlaca] = useState<string>("");
   const [marca, setMarca] = useState<string>("");
@@ -30,10 +30,10 @@ const EditarCarro = ({ enviar }: IEditCarProps) => {
 
   async function buscarCarroId() {
     await getCarById(Number(id)).then((res) => {
-      setCarro(res)
-      setCor(res.cor)
-      setMarca(res.marca)
-      setPlaca(res.placa)
+      setCarro(res);
+      setCor(res.cor);
+      setMarca(res.marca);
+      setPlaca(res.placa);
     });
   }
 

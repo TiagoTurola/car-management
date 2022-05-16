@@ -2,32 +2,28 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Container, InputContent, Label, Button, Div } from "./styles";
-import { getCarById, ICarInfo, IRegisterCar } from "../../pages/api/car";
-import { getBrand, getBrandById, IBrandInfo } from "../../pages/api/brand";
+import { getBrandById, IBrandInfo } from "../../pages/api/brand";
 
-interface IEditCarProps {
-  enviar?: (id: number, value: IRegisterCar) => void;
+interface IEditBrandProps {
+  enviar?: (id: number, value: IBrandInfo) => void;
 }
 
-const EditarMarca = ({ enviar }: IEditCarProps) => {
+const EditarMarca = ({ enviar }: IEditBrandProps) => {
   const router = useRouter();
-  const { ['editar-carro']: id } = router.query;
-  const [marca, setMarca] = useState<string>("");
-  const [listaMarca, setlistaMarca] = useState<IBrandInfo[]>([]);
+  const { ["editar-marca"]: id } = router.query;
+  const [marca, setMarca] = useState<IBrandInfo>();
+  const [name, setName] = useState<string>("");
 
   const enviarForm = (event: React.FormEvent<HTMLFormElement>) => {
     router.push("/marcas");
     event.preventDefault();
-    enviar?.(Number(id), { marca } as IRegisterCar);
+    enviar?.(Number(id), { name } as IBrandInfo);
   };
-
-  async function buscarMarcas() {
-    await getBrand().then((res) => setlistaMarca(res));
-  }
 
   async function buscarMarcasId() {
     await getBrandById(Number(id)).then((res) => {
-      setMarca(res.marca)
+      setMarca(res);
+      setName(res.name);
     });
   }
 
@@ -35,29 +31,22 @@ const EditarMarca = ({ enviar }: IEditCarProps) => {
     if (!marca) {
       buscarMarcasId();
     }
-    buscarMarcas();
   }, []);
 
   return (
     <Container onSubmit={enviarForm}>
       <h1>Editar Marca</h1>
       <InputContent>
+        <Label>ID</Label>
+        <input type="text" value={marca?.id} disabled />
+      </InputContent>
+      <InputContent>
         <Label>Marca</Label>
-        <select
-          name="marcas"
-          id=""
-          onChange={(data) => setMarca(data.currentTarget.value)}
-        >
-          <option value={marca}>{marca}</option>
-
-          {listaMarca.map((marca) => {
-            return (
-              <option key={marca.name} value={marca.name}>
-                {marca.name}
-              </option>
-            );
-          })}
-        </select>
+        <input
+          type="text"
+          value={name}
+          onChange={(data) => setName(data.currentTarget.value)}
+        />
       </InputContent>
       <Div>
         <Button type="submit">Salvar</Button>

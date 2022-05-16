@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import Carros from './carros/indes'
+import Carros from './carros/index'
 
 const Home: NextPage = () => {
   return (

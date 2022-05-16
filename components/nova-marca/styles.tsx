@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.form`
     padding: 20px;
 `;
 
@@ -18,7 +18,7 @@ export const Div = styled.div`
     justify-content: flex-start;
 `;
 
-export const Button = styled.div`
+export const Button = styled.button`
     padding: 5px 10px;
     border: none;
     border-radius: 5px;
