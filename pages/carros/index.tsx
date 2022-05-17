@@ -1,8 +1,14 @@
+import Link from "next/link";
 import type { NextPage } from "next";
 import Header from "../../components/header";
-import CarTitle from "../../components/carTitle";
 import TableCar from "../../components/tableCar";
-import { Container, InputContent, Label } from "./styles";
+import {
+  Button,
+  Container,
+  ContentTextButtonHeader,
+  InputContent,
+  Label,
+} from "./styles";
 import { useState } from "react";
 
 const CarPage: NextPage = () => {
@@ -12,7 +18,12 @@ const CarPage: NextPage = () => {
   return (
     <>
       <Header />
-      <CarTitle />
+      <ContentTextButtonHeader>
+        <h1>Carros</h1>
+        <Button>
+          <Link href="/carros/novo">Novo Carro</Link>
+        </Button>
+      </ContentTextButtonHeader>
       <Container>
         <InputContent>
           <Label>Filtrar por placa</Label>
