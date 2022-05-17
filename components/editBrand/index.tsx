@@ -2,43 +2,43 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Container, InputContent, Label, Button, Div } from "./styles";
-import { getBrandById, IBrandInfo } from "../../pages/api/brand";
+import { getBrandById, IBrandInfo } from "../../pages/api/brands";
 
 interface IEditBrandProps {
-  enviar?: (id: number, value: IBrandInfo) => void;
+  submit?: (id: number, value: IBrandInfo) => void;
 }
 
-const EditarMarca = ({ enviar }: IEditBrandProps) => {
+const EditBrand = ({ submit }: IEditBrandProps) => {
   const router = useRouter();
   const { ["editar-marca"]: id } = router.query;
-  const [marca, setMarca] = useState<IBrandInfo>();
+  const [brand, setBrand] = useState<IBrandInfo>();
   const [name, setName] = useState<string>("");
 
-  const enviarForm = (event: React.FormEvent<HTMLFormElement>) => {
+  const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
     router.push("/marcas");
     event.preventDefault();
-    enviar?.(Number(id), { name } as IBrandInfo);
+    submit?.(Number(id), { name } as IBrandInfo);
   };
 
   async function buscarMarcasId() {
     await getBrandById(Number(id)).then((res) => {
-      setMarca(res);
+      setBrand(res);
       setName(res.name);
     });
   }
 
   useEffect(() => {
-    if (!marca) {
+    if (!brand) {
       buscarMarcasId();
     }
   }, []);
 
   return (
-    <Container onSubmit={enviarForm}>
+    <Container onSubmit={submitForm}>
       <h1>Editar Marca</h1>
       <InputContent>
         <Label>ID</Label>
-        <input type="text" value={marca?.id} disabled />
+        <input type="text" value={brand?.id} disabled />
       </InputContent>
       <InputContent>
         <Label>Marca</Label>
@@ -59,4 +59,4 @@ const EditarMarca = ({ enviar }: IEditBrandProps) => {
   );
 };
 
-export default EditarMarca;
+export default EditBrand;

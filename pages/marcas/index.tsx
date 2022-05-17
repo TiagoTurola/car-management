@@ -1,16 +1,16 @@
-import type { NextPage } from 'next'
-import Header from '../../components/header'
-import Conteudo from '../../components/conteudo-marca'
-import TabelaMarca from '../../components/tabela-marca'
+import type { NextPage } from "next";
+import Header from "../../components/header";
+import BrandTitle from "../../components/brandTitle";
+import TableBrand from "../../components/tableBrand";
 
-const Marcas: NextPage = () => {
+const BrandPage: NextPage = () => {
   return (
     <>
       <Header />
-      <Conteudo />
-      <TabelaMarca/>
+      <BrandTitle />
+      <TableBrand />
     </>
-  )
-}
+  );
+};
 
-export default Marcas;
+export default BrandPage;

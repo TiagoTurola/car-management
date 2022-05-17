@@ -1,9 +1,9 @@
 import type { NextPage } from "next";
 import Header from "../../../components/header";
-import Conteudo from "../../../components/conteudo-editar-carro";
-import { IRegisterCar, updateCar } from "../../api/car";
+import Conteudo from "../../../components/editCar";
+import { IRegisterCar, updateCar } from "../../api/cars";
 
-const Editar: NextPage = () => {
+const EditCarPage: NextPage = () => {
   async function atualizarCarro(id: number, data: IRegisterCar) {
     await updateCar(id, data)
       .then(() => {
@@ -18,7 +18,7 @@ const Editar: NextPage = () => {
     <>
       <Header />
       <Conteudo
-        enviar={(id, data) => {
+        submit={(id, data) => {
           atualizarCarro(id, data);
         }}
       />
@@ -26,4 +26,4 @@ const Editar: NextPage = () => {
   );
 };
 
-export default Editar;
+export default EditCarPage;

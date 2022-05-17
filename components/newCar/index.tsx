@@ -2,43 +2,47 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Container, InputContent, Label, Button, Div } from "./styles";
-import { IRegisterCar } from "../../pages/api/car";
-import { getBrand, IBrandInfo } from "../../pages/api/brand";
+import { IRegisterCar } from "../../pages/api/cars";
+import { fetchAllBrands, IBrandInfo } from "../../pages/api/brands";
 
 interface INewCarProps {
-  enviar?: (value: IRegisterCar) => void;
+  submit?: (value: IRegisterCar) => void;
 }
 
-const NovoCarro = ({ enviar }: INewCarProps) => {
+const NewCar = ({ submit }: INewCarProps) => {
   const router = useRouter();
-  const [placa, setPlaca] = useState<string>("");
-  const [marca, setMarca] = useState<string>("");
-  const [cor, setCor] = useState<string>("");
-  const [listaMarca, setlistaMarca] = useState<IBrandInfo[]>([]);
+  const [carPlate, setCarPlate] = useState<string>("");
+  const [carBrand, setCarBrand] = useState<string>("");
+  const [carColor, setCarColor] = useState<string>("");
+  const [listBrands, setListBrands] = useState<IBrandInfo[]>([]);
 
-  const enviarForm = (event: React.FormEvent<HTMLFormElement>) => {
+  const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
     router.push("/");
     event.preventDefault();
-    enviar?.({ placa, marca, cor } as IRegisterCar);
+    submit?.({
+      placa: carPlate,
+      marca: carBrand,
+      cor: carColor,
+    } as IRegisterCar);
   };
 
-  async function buscarMarcas() {
-    await getBrand().then((res) => setlistaMarca(res));
+  async function fetchBrands() {
+    await fetchAllBrands().then((res) => setListBrands(res));
   }
 
   useEffect(() => {
-    buscarMarcas();
-  }, [listaMarca.length]);
+    fetchBrands();
+  }, [listBrands.length]);
 
   return (
-    <Container onSubmit={enviarForm}>
+    <Container onSubmit={submitForm}>
       <h1>Novo Carro</h1>
       <InputContent>
         <Label>Placa</Label>
         <input
           type="text"
-          value={placa}
-          onChange={(data) => setPlaca(data.currentTarget.value)}
+          value={carPlate}
+          onChange={(data) => setCarPlate(data.currentTarget.value)}
         />
       </InputContent>
       <InputContent>
@@ -46,11 +50,11 @@ const NovoCarro = ({ enviar }: INewCarProps) => {
         <select
           name="marcas"
           id=""
-          onChange={(data) => setMarca(data.currentTarget.value)}
+          onChange={(data) => setCarBrand(data.currentTarget.value)}
         >
           <option value="Selecione uma marca"></option>
 
-          {listaMarca.map((marca) => {
+          {listBrands.map((marca) => {
             return (
               <option key={marca.name} value={marca.name}>
                 {marca.name}
@@ -63,8 +67,8 @@ const NovoCarro = ({ enviar }: INewCarProps) => {
         <Label>Cor</Label>
         <input
           type="text"
-          value={cor}
-          onChange={(data) => setCor(data.currentTarget.value)}
+          value={carColor}
+          onChange={(data) => setCarColor(data.currentTarget.value)}
         />
       </InputContent>
       <Div>
@@ -78,4 +82,4 @@ const NovoCarro = ({ enviar }: INewCarProps) => {
   );
 };
 
-export default NovoCarro;
+export default NewCar;

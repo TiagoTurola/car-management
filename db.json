@@ -11,6 +11,12 @@
       "marca": "Volvo",
       "cor": "Roxo",
       "id": 2
+    },
+    {
+      "placa": "ATS1456",
+      "marca": "Renault",
+      "cor": "Cinza",
+      "id": 3
     }
   ],
   "marcas": [
@@ -21,6 +27,14 @@
     {
       "name": "Volkswagen",
       "id": 3
+    },
+    {
+      "name": "Volvo",
+      "id": 4
+    },
+    {
+      "name": "Renault",
+      "id": 5
     }
   ]
 }

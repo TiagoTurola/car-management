@@ -1,25 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { getBrandById, IBrandInfo } from "../../pages/api/brand";
+import { IBrandInfo } from "../../pages/api/brands";
 import { Container, InputContent, Label, Button, Div } from "./styles";
 
 interface INewBrandProps {
-  enviar?: (value: IBrandInfo) => void;
+  submit?: (value: IBrandInfo) => void;
 }
 
-const NovaMarca = ({ enviar }: INewBrandProps) => {
+const NewBrand = ({ submit }: INewBrandProps) => {
   const router = useRouter();
   const [name, setName] = useState<string>("");
 
-  const enviarForm = (event: React.FormEvent<HTMLFormElement>) => {
+  const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
     router.push("/marcas");
     event.preventDefault();
-    enviar?.({ name } as IBrandInfo);
+    submit?.({ name } as IBrandInfo);
   };
 
   return (
-    <Container onSubmit={enviarForm}>
+    <Container onSubmit={submitForm}>
       <h1>Nova Marca</h1>
       <InputContent>
         <Label>Marca</Label>
@@ -39,4 +39,4 @@ const NovaMarca = ({ enviar }: INewBrandProps) => {
   );
 };
 
-export default NovaMarca;
+export default NewBrand;

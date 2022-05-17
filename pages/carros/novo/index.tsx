@@ -1,9 +1,9 @@
 import type { NextPage } from "next";
 import Header from "../../../components/header";
-import Conteudo from "../../../components/novo-carro";
-import { IRegisterCar, saveCar } from "../../api/car";
+import Conteudo from "../../../components/newCar";
+import { IRegisterCar, saveCar } from "../../api/cars";
 
-const Novo: NextPage = () => {
+const NewCarPage: NextPage = () => {
   async function salvarCarro(data: IRegisterCar) {
     await saveCar(data)
       .then(() => {
@@ -18,7 +18,7 @@ const Novo: NextPage = () => {
     <>
       <Header />
       <Conteudo
-        enviar={(data) => {
+        submit={(data) => {
           salvarCarro(data);
         }}
       />
@@ -26,4 +26,4 @@ const Novo: NextPage = () => {
   );
 };
 
-export default Novo;
+export default NewCarPage;

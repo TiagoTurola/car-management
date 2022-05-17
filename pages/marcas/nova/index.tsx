@@ -1,9 +1,9 @@
 import type { NextPage } from "next";
 import Header from "../../../components/header";
-import Conteudo from "../../../components/nova-marca";
-import { IBrandInfo, saveBrand } from "../../api/brand";
+import Conteudo from "../../../components/newBrand";
+import { IBrandInfo, saveBrand } from "../../api/brands";
 
-const Novo: NextPage = () => {
+const NewBrandPage: NextPage = () => {
   async function salvarMarca(data: IBrandInfo) {
     await saveBrand(data)
       .then(() => {
@@ -17,7 +17,7 @@ const Novo: NextPage = () => {
     <>
       <Header />
       <Conteudo
-        enviar={(data) => {
+        submit={(data) => {
           salvarMarca(data);
         }}
       />
@@ -25,4 +25,4 @@ const Novo: NextPage = () => {
   );
 };
 
-export default Novo;
+export default NewBrandPage;

@@ -1,9 +1,9 @@
 import type { NextPage } from "next";
 import Header from "../../../components/header";
-import Conteudo from "../../../components/conteudo-editar-marca";
-import { IBrandInfo, updateBrand } from "../../api/brand";
+import Conteudo from "../../../components/editBrand";
+import { IBrandInfo, updateBrand } from "../../api/brands";
 
-const EditarMarca: NextPage = () => {
+const EditBrandPage: NextPage = () => {
   async function atualizarMarca(id: number, data: IBrandInfo) {
     await updateBrand(id, data)
       .then(() => {
@@ -18,7 +18,7 @@ const EditarMarca: NextPage = () => {
     <>
       <Header />
       <Conteudo
-        enviar={(id, data) => {
+        submit={(id, data) => {
           atualizarMarca(id, data);
         }}
       />
@@ -26,4 +26,4 @@ const EditarMarca: NextPage = () => {
   );
 };
 
-export default EditarMarca;
+export default EditBrandPage;

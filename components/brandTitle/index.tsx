@@ -2,17 +2,15 @@ import Link from "next/link";
 import React from "react";
 import { Container, Button } from "./styles";
 
-const Header = () => {
+const BrandTitle = () => {
   return (
     <Container>
+      <h1>Marcas</h1>
       <Button>
-        <Link href="/carros"> Carros</Link>
-      </Button>
-      <Button>
-        <Link href="/marcas"> Marcas</Link>
+        <Link href="/marcas/nova">Nova Marca</Link>
       </Button>
     </Container>
   );
 };
 
-export default Header;
+export default BrandTitle;

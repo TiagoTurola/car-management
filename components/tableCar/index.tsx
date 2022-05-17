@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { deleteCar, getCar, ICarInfo } from "../../pages/api/car";
+import { deleteCar, fetchAllCars, ICarInfo } from "../../pages/api/cars";
 import { Table, Thead, Tr, Th, Tbody, Td, Button } from "./styles";
 
 interface ITableCarProps {
@@ -8,35 +8,36 @@ interface ITableCarProps {
   filterBrand: string;
 }
 
-const TabelaCarro = ({ filterPlate, filterBrand }: ITableCarProps) => {
-  let [carList, setCarList] = useState<ICarInfo[]>([]);
+const TableCar = ({ filterPlate, filterBrand }: ITableCarProps) => {
+  let [listCars, setListCars] = useState<ICarInfo[]>([]);
+
   if (filterPlate) {
-    carList = carList.filter((car) =>
+    listCars = listCars.filter((car) =>
       car.placa.toLowerCase().includes(filterPlate.toLowerCase())
     );
   } else if (filterBrand) {
-    carList = carList.filter((car) =>
+    listCars = listCars.filter((car) =>
       car.marca.toLowerCase().includes(filterBrand.toLowerCase())
     );
   }
 
-  async function getCarList() {
-    await getCar()
-      .then((data) => setCarList(data))
+  async function fetchCars() {
+    await fetchAllCars()
+      .then((data) => setListCars(data))
       .catch((error) => {
         console.log(error.message);
       });
   }
 
-  async function deleteCarList(id: number) {
+  async function deleteCarById(id: number) {
     await deleteCar(id).catch((error) => {
       console.log(error.message);
     });
   }
 
   useEffect(() => {
-    getCarList();
-  }, [carList.length]);
+    fetchCars();
+  }, [listCars.length]);
 
   return (
     <Table>
@@ -49,7 +50,7 @@ const TabelaCarro = ({ filterPlate, filterBrand }: ITableCarProps) => {
         </Tr>
       </Thead>
       <Tbody>
-        {carList.map((car, index) => {
+        {listCars.map((car, index) => {
           return (
             <>
               <Tr key={index}>
@@ -62,8 +63,8 @@ const TabelaCarro = ({ filterPlate, filterBrand }: ITableCarProps) => {
                   </Link>
                   <Button
                     onClick={() => {
-                      deleteCarList(car.id);
-                      getCarList();
+                      deleteCarById(car.id);
+                      fetchCars();
                     }}
                   >
                     Excluir
@@ -78,4 +79,4 @@ const TabelaCarro = ({ filterPlate, filterBrand }: ITableCarProps) => {
   );
 };
 
-export default TabelaCarro;
+export default TableCar;

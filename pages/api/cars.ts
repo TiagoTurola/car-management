@@ -14,7 +14,7 @@ export interface IRegisterCar {
   cor: string;
 }
 
-export async function getCar() {
+export async function fetchAllCars() {
   const { data } = await instance.get("/carros").catch((error) => {
     throw error;
   });

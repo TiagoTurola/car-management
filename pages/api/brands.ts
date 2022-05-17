@@ -5,7 +5,7 @@ export interface IBrandInfo {
   name: string;
 }
 
-export async function getBrand(): Promise<IBrandInfo[]> {
+export async function fetchAllBrands(): Promise<IBrandInfo[]> {
   const { data } = await instance.get("/marcas").catch((error) => {
     throw error;
   });

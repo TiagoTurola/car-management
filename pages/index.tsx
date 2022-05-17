@@ -1,10 +1,8 @@
-import type { NextPage } from 'next'
-import Carros from './carros/index'
+import type { NextPage } from "next";
+import CarPage from "./carros/index";
 
 const Home: NextPage = () => {
-  return (
-    <Carros/>
-  )
-}
+  return <CarPage />;
+};
 
-export default Home
+export default Home;
