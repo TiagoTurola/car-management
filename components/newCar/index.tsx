@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Container, InputContent, Label, Button, Div } from "./styles";
+import { Container, InputContent, Label, Button, Div, Select } from "./styles";
 import { IRegisterCar } from "../../pages/api/cars";
 import { fetchAllBrands, IBrandInfo } from "../../pages/api/brands";
 
@@ -47,7 +47,7 @@ const NewCar = ({ submit }: INewCarProps) => {
       </InputContent>
       <InputContent>
         <Label>Marca</Label>
-        <select
+        <Select
           name="marcas"
           id=""
           onChange={(data) => setCarBrand(data.currentTarget.value)}
@@ -61,7 +61,7 @@ const NewCar = ({ submit }: INewCarProps) => {
               </option>
             );
           })}
-        </select>
+        </Select>
       </InputContent>
       <InputContent>
         <Label>Cor</Label>

@@ -14,11 +14,16 @@ const TableCar = ({ filterPlate, filterBrand }: ITableCarProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [dataCar, setDataCar] = useState<ICarInfo>();
 
-  if (filterPlate) {
+  if (filterPlate && filterBrand && !filterBrand.includes("Todos")) {
+    listCars = listCars.filter((car) =>
+      car.placa.toLowerCase().includes(filterPlate.toLowerCase()) &&
+      car.marca.toLowerCase().includes(filterBrand.toLowerCase())
+    );
+  } else if (filterPlate) {
     listCars = listCars.filter((car) =>
       car.placa.toLowerCase().includes(filterPlate.toLowerCase())
     );
-  } else if (filterBrand) {
+  } else if (filterBrand && !filterBrand.includes("Todos")) {
     listCars = listCars.filter((car) =>
       car.marca.toLowerCase().includes(filterBrand.toLowerCase())
     );

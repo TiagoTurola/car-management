@@ -27,3 +27,7 @@ export const Button = styled.button`
     background-color: #279ECA;
     margin: 10px;
 `;
+
+export const Select = styled.select`
+    width: 177px;
+`;

@@ -30,3 +30,8 @@ export const InputContent = styled.div`
 `;
 
 export const Label = styled.div``;
+
+export const Select = styled.select`
+  width: 177px;
+`;
+
