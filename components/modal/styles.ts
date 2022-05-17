@@ -2,21 +2,45 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: absolute;
-  visibility: visible;
-  background-color: rgba(0, 0, 0, 0.2);
-  width: 450px;
-  height: 150px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(39, 158, 202, 0.2);
+  width: 100%;
+  height: 100%;
+`;
+
+export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 200px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+`;
+
+export const Title = styled.h1`
+  font-size: 20px;
+`;
+
+export const ContentButton = styled.div`
+  display: flex;
 `;
 
 export const Button = styled.button`
-  padding: 5px 10px;
+  padding: 5px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   color: white;
   background-color: #279eca;
+  width: 200px;
+  margin: 10px;
 `;

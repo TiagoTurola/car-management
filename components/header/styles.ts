@@ -10,10 +10,11 @@ export const Container = styled.div`
 `;
 
 export const Button = styled.button`
-    border: none;
-    padding: 4px;
-    margin-left: 5px;
-    color: #279ECA;
+    border: 1px solid black;
+    padding: 4px 8px;
+    margin-left: 10px;
+    color: black;
     cursor: pointer;
+    border-radius: 5px;
 `;
 

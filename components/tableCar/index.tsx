@@ -2,6 +2,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { deleteCar, fetchAllCars, ICarInfo } from "../../pages/api/cars";
 import { Table, Thead, Tr, Th, Tbody, Td, Button } from "./styles";
+import Modal from "../../components/modal/modal";
 
 interface ITableCarProps {
   filterPlate: string;
@@ -10,6 +11,8 @@ interface ITableCarProps {
 
 const TableCar = ({ filterPlate, filterBrand }: ITableCarProps) => {
   let [listCars, setListCars] = useState<ICarInfo[]>([]);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [dataCar, setDataCar] = useState<ICarInfo>();
 
   if (filterPlate) {
     listCars = listCars.filter((car) =>
@@ -40,42 +43,55 @@ const TableCar = ({ filterPlate, filterBrand }: ITableCarProps) => {
   }, [listCars.length]);
 
   return (
-    <Table>
-      <Thead>
-        <Tr>
-          <Th>Placa</Th>
-          <Th>Cor</Th>
-          <Th>Marca</Th>
-          <Th>Ações</Th>
-        </Tr>
-      </Thead>
-      <Tbody>
-        {listCars.map((car, index) => {
-          return (
-            <>
-              <Tr key={index}>
-                <Td>{car.placa}</Td>
-                <Td>{car.cor}</Td>
-                <Td>{car.marca}</Td>
-                <Td>
-                  <Link href={`/carros/editar/${car.id}`}>
-                    <Button>Editar</Button>
-                  </Link>
-                  <Button
-                    onClick={() => {
-                      deleteCarById(car.id);
-                      fetchCars();
-                    }}
-                  >
-                    Excluir
-                  </Button>
-                </Td>
-              </Tr>
-            </>
-          );
-        })}
-      </Tbody>
-    </Table>
+    <>
+      <Table>
+        <Thead>
+          <Tr>
+            <Th>Placa</Th>
+            <Th>Cor</Th>
+            <Th>Marca</Th>
+            <Th>Ações</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          {listCars.map((car, index) => {
+            return (
+              <>
+                <Tr key={index}>
+                  <Td>{car.placa}</Td>
+                  <Td>{car.cor}</Td>
+                  <Td>{car.marca}</Td>
+                  <Td>
+                    <Link href={`/carros/editar/${car.id}`}>
+                      <Button>Editar</Button>
+                    </Link>
+                    <Button
+                      onClick={() => {
+                        setDataCar(car);
+                        setIsOpen(true);
+                      }}
+                    >
+                      Excluir
+                    </Button>
+                  </Td>
+                </Tr>
+              </>
+            );
+          })}
+        </Tbody>
+      </Table>
+      <Modal
+        isOpen={isOpen}
+        isCar={true}
+        closeModal={() => {
+          setIsOpen(false);
+        }}
+        deleteData={() => {
+          deleteCarById(Number(dataCar?.id));
+          fetchCars();
+        }}
+      />
+    </>
   );
 };
 

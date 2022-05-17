@@ -16,7 +16,9 @@ export const Tbody = styled.tbody``;
 
 export const Tr = styled.tr``;
 
-export const Td = styled.td``;
+export const Td = styled.td`
+  width: 150px;
+`;
 
 export const Th = styled.th`
   text-align: start;

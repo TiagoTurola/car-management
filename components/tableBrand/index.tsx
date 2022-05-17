@@ -5,10 +5,13 @@ import {
   fetchAllBrands,
   IBrandInfo,
 } from "../../pages/api/brands";
-import { Table, Thead, Tr, Th, Tbody, Td, Button } from "./styles";
+import { Table, Thead, Tr, Th, Tbody, Td, Button, TdBrand} from "./styles";
+import Modal from "../../components/modal/modal";
 
 const TableBrand = () => {
   const [listBrands, setListBrands] = useState<IBrandInfo[]>([]);
+  const [dataBrand, setDataBrand] = useState<IBrandInfo>();
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   async function fetchBrands() {
     await fetchAllBrands()
@@ -29,38 +32,50 @@ const TableBrand = () => {
   }, [listBrands.length]);
 
   return (
-    <Table>
-      <Thead>
-        <Tr>
-          <Th>Marca</Th>
-          <Th>Ações</Th>
-        </Tr>
-      </Thead>
-      <Tbody>
-        {listBrands.map((brand, index) => {
-          return (
-            <>
-              <Tr key={index}>
-                <Td>{brand.name}</Td>
-                <Td>
-                  <Link href={`/marcas/editar/${brand.id}`}>
-                    <Button>Editar</Button>
-                  </Link>
-                  <Button
-                    onClick={() => {
-                      deleteBrandById(Number(brand.id));
-                      fetchBrands();
-                    }}
-                  >
-                    Excluir
-                  </Button>
-                </Td>
-              </Tr>
-            </>
-          );
-        })}
-      </Tbody>
-    </Table>
+    <>
+      <Table>
+        <Thead>
+          <Tr>
+            <Th>Marca</Th>
+            <Th>Ações</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          {listBrands.map((brand, index) => {
+            return (
+              <>
+                <Tr key={index}>
+                  <TdBrand>{brand.name}</TdBrand>
+                  <Td>
+                    <Link href={`/marcas/editar/${brand.id}`}>
+                      <Button>Editar</Button>
+                    </Link>
+                    <Button
+                      onClick={() => {
+                        setDataBrand(brand);
+                        setIsOpen(true);
+                      }}
+                    >
+                      Excluir
+                    </Button>
+                  </Td>
+                </Tr>
+              </>
+            );
+          })}
+        </Tbody>
+      </Table>
+      <Modal
+        isOpen={isOpen}
+        closeModal={() => {
+          setIsOpen(false);
+        }}
+        deleteData={() => {
+          deleteBrandById(Number(dataBrand?.id));
+          fetchBrands();
+        }}
+      />
+    </>
   );
 };
 
