@@ -50,7 +50,6 @@ const EditCar = ({ submit }: IEditCarProps) => {
 
   return (
     <Container onSubmit={submitForm}>
-      <h1>Editar Carro</h1>
       <InputContent>
         <Label>Placa</Label>
         <input

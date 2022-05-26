@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { NextPage } from "next";
 import Header from "../../components/header";
 import TableCar from "../../components/tableCar";
+import Title from "../../components/title";
 import {
   Button,
   Container,
@@ -30,7 +31,7 @@ const CarPage: NextPage = () => {
     <>
       <Header />
       <ContentTextButtonHeader>
-        <h1>Carros</h1>
+        <Title title={"Carros"}></Title>
         <Button>
           <Link href="/carros/novo">Novo Carro</Link>
         </Button>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { IBrandInfo } from "../../pages/api/brands";
 import { Container, InputContent, Label, Button, Div } from "./styles";
+import Title from "../title";
 
 interface INewBrandProps {
   submit?: (value: IBrandInfo) => void;
@@ -20,7 +21,7 @@ const NewBrand = ({ submit }: INewBrandProps) => {
 
   return (
     <Container onSubmit={submitForm}>
-      <h1>Nova Marca</h1>
+      <Title title={"Nova Marca"}></Title>
       <InputContent>
         <Label>Marca</Label>
         <input

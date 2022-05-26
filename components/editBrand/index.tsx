@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { Container, InputContent, Label, Button, Div } from "./styles";
 import { getBrandById, IBrandInfo } from "../../pages/api/brands";
+import Title from "../title";
 
 interface IEditBrandProps {
   submit?: (id: number, value: IBrandInfo) => void;
@@ -35,7 +36,7 @@ const EditBrand = ({ submit }: IEditBrandProps) => {
 
   return (
     <Container onSubmit={submitForm}>
-      <h1>Editar Marca</h1>
+      <Title title={"Editar Marca"}></Title>
       <InputContent>
         <Label>ID</Label>
         <input type="text" value={brand?.id} disabled />

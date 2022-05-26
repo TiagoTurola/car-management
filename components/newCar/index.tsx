@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { Container, InputContent, Label, Button, Div, Select } from "./styles";
 import { IRegisterCar } from "../../pages/api/cars";
 import { fetchAllBrands, IBrandInfo } from "../../pages/api/brands";
+import Title from "../title";
 
 interface INewCarProps {
   submit?: (value: IRegisterCar) => void;
@@ -36,7 +37,7 @@ const NewCar = ({ submit }: INewCarProps) => {
 
   return (
     <Container onSubmit={submitForm}>
-      <h1>Novo Carro</h1>
+      <Title title={"Novo Carro"}></Title>
       <InputContent>
         <Label>Placa</Label>
         <input
