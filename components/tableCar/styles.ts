@@ -25,13 +25,3 @@ export const Th = styled.th`
   border-bottom: inset;
   padding-bottom: 5px;
 `;
-
-export const Button = styled.button`
-  padding: 5px 10px;
-  margin: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  color: white;
-  background-color: #279eca;
-`;

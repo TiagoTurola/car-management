@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Container, InputContent, Label, Button, Div } from "./styles";
+import { Container, InputContent, Label, Div } from "./styles";
 import { getBrandById, IBrandInfo } from "../../pages/api/brands";
 import Title from "../title";
+import Input from "../core/inputs";
+import Button from "../core/buttons";
 
 interface IEditBrandProps {
   submit?: (id: number, value: IBrandInfo) => void;
@@ -39,22 +41,20 @@ const EditBrand = ({ submit }: IEditBrandProps) => {
       <Title title={"Editar Marca"}></Title>
       <InputContent>
         <Label>ID</Label>
-        <input type="text" value={brand?.id} disabled />
+        <Input type="text" value={String(brand?.id)} disabled />
       </InputContent>
       <InputContent>
         <Label>Marca</Label>
-        <input
+        <Input
           type="text"
           value={name}
           onChange={(data) => setName(data.currentTarget.value)}
         />
       </InputContent>
       <Div>
-        <Button type="submit">Salvar</Button>
+        <Button type="submit" texto="Salvar" />
 
-        <Link href="/marcas">
-          <Button>Voltar</Button>
-        </Link>
+        <Button path="/marcas" texto="Voltar" />
       </Div>
     </Container>
   );

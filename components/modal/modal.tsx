@@ -1,5 +1,7 @@
 import React from "react";
-import { Container, Button, Content, ContentButton, Title} from "./styles";
+import { Container, Content, ContentButton, Title } from "./styles";
+import Input from "../core/inputs";
+import Button from "../core/buttons";
 
 interface IModalProps {
   isOpen: boolean;
@@ -21,21 +23,19 @@ const Modal = ({ closeModal, deleteData, isOpen, isCar }: IModalProps) => {
           </Title>
           <p>Essa ação não poderá ser desfeita.</p>
           <ContentButton>
-          <Button
-            onClick={() => {
-              closeModal();
-              deleteData();
-            }}
-          >
-            Sim
-          </Button>
-          <Button
-            onClick={() => {
-              closeModal();
-            }}
-          >
-            Não
-          </Button>
+            <Button
+              texto="Sim"
+              onClick={() => {
+                closeModal();
+                deleteData();
+              }}
+            />
+            <Button
+              texto="Não"
+              onClick={() => {
+                closeModal();
+              }}
+            />
           </ContentButton>
         </Content>
       </Container>

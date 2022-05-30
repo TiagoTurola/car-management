@@ -1,7 +1,7 @@
 {
   "carros": [
     {
-      "placa": "VRT5487",
+      "placa": "VRT5488",
       "marca": "Volvo",
       "cor": "Roxo",
       "id": 2
@@ -11,12 +11,6 @@
       "marca": "Volkswagen",
       "cor": "Laranja",
       "id": 3
-    },
-    {
-      "placa": "DLP5823",
-      "marca": "Fiat",
-      "cor": "Preto",
-      "id": 4
     }
   ],
   "marcas": [
@@ -31,10 +25,6 @@
     {
       "name": "Volvo",
       "id": 4
-    },
-    {
-      "name": "Renault",
-      "id": 5
     }
   ]
 }

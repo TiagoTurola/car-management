@@ -1,8 +1,8 @@
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { deleteCar, fetchAllCars, ICarInfo } from "../../pages/api/cars";
-import { Table, Thead, Tr, Th, Tbody, Td, Button } from "./styles";
+import { Table, Thead, Tr, Th, Tbody, Td } from "./styles";
 import Modal from "../../components/modal/modal";
+import Button from "../../components/core/buttons";
 
 interface ITableCarProps {
   filterPlate: string;
@@ -15,9 +15,10 @@ const TableCar = ({ filterPlate, filterBrand }: ITableCarProps) => {
   const [dataCar, setDataCar] = useState<ICarInfo>();
 
   if (filterPlate && filterBrand && !filterBrand.includes("Todos")) {
-    listCars = listCars.filter((car) =>
-      car.placa.toLowerCase().includes(filterPlate.toLowerCase()) &&
-      car.marca.toLowerCase().includes(filterBrand.toLowerCase())
+    listCars = listCars.filter(
+      (car) =>
+        car.placa.toLowerCase().includes(filterPlate.toLowerCase()) &&
+        car.marca.toLowerCase().includes(filterBrand.toLowerCase())
     );
   } else if (filterPlate) {
     listCars = listCars.filter((car) =>
@@ -67,17 +68,15 @@ const TableCar = ({ filterPlate, filterBrand }: ITableCarProps) => {
                   <Td>{car.cor}</Td>
                   <Td>{car.marca}</Td>
                   <Td>
-                    <Link href={`/carros/editar/${car.id}`}>
-                      <Button>Editar</Button>
-                    </Link>
+                    <Button texto="Editar" path={`/carros/editar/${car.id}`} />
+
                     <Button
+                      texto="Excluir"
                       onClick={() => {
                         setDataCar(car);
                         setIsOpen(true);
                       }}
-                    >
-                      Excluir
-                    </Button>
+                    />
                   </Td>
                 </Tr>
               </>

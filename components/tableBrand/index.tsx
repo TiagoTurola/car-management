@@ -1,12 +1,12 @@
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import {
   deleteBrand,
   fetchAllBrands,
   IBrandInfo,
 } from "../../pages/api/brands";
-import { Table, Thead, Tr, Th, Tbody, Td, Button, TdBrand} from "./styles";
+import { Table, Thead, Tr, Th, Tbody, Td, TdBrand } from "./styles";
 import Modal from "../../components/modal/modal";
+import Button from "../core/buttons";
 
 const TableBrand = () => {
   const [listBrands, setListBrands] = useState<IBrandInfo[]>([]);
@@ -47,17 +47,17 @@ const TableBrand = () => {
                 <Tr key={index}>
                   <TdBrand>{brand.name}</TdBrand>
                   <Td>
-                    <Link href={`/marcas/editar/${brand.id}`}>
-                      <Button>Editar</Button>
-                    </Link>
                     <Button
+                      path={`/marcas/editar/${brand.id}`}
+                      texto="Editar"
+                    />
+                    <Button
+                      texto="Excluir"
                       onClick={() => {
                         setDataBrand(brand);
                         setIsOpen(true);
                       }}
-                    >
-                      Excluir
-                    </Button>
+                    />
                   </Td>
                 </Tr>
               </>

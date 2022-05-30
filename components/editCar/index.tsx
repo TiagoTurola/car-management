@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Container, InputContent, Label, Button, Div } from "./styles";
+import { Container, InputContent, Label, Div } from "./styles";
 import { getCarById, ICarInfo, IRegisterCar } from "../../pages/api/cars";
 import { fetchAllBrands, IBrandInfo } from "../../pages/api/brands";
+import Input from "../core/inputs";
+import Button from "../core/buttons";
 
 interface IEditCarProps {
   submit?: (id: number, value: IRegisterCar) => void;
@@ -52,7 +54,7 @@ const EditCar = ({ submit }: IEditCarProps) => {
     <Container onSubmit={submitForm}>
       <InputContent>
         <Label>Placa</Label>
-        <input
+        <Input
           type="text"
           value={carPlate}
           onChange={(data) => setCarPlate(data.currentTarget.value)}
@@ -78,18 +80,16 @@ const EditCar = ({ submit }: IEditCarProps) => {
       </InputContent>
       <InputContent>
         <Label>Cor</Label>
-        <input
+        <Input
           type="text"
           value={carColor}
           onChange={(data) => setCarColor(data.currentTarget.value)}
         />
       </InputContent>
       <Div>
-        <Button type="submit">Salvar</Button>
+        <Button type="submit" texto="Salvar" />
 
-        <Link href="/carros">
-          <Button>Voltar</Button>
-        </Link>
+        <Button path="/carros" texto="Voltar" />
       </Div>
     </Container>
   );

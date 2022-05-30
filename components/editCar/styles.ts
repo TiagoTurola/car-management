@@ -17,13 +17,3 @@ export const Div = styled.div`
     padding: 10px;
     justify-content: flex-start;
 `;
-
-export const Button = styled.button`
-    padding: 5px 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    color: white;
-    background-color: #279ECA;
-    margin: 10px;
-`;

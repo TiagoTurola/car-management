@@ -3,8 +3,8 @@ import type { NextPage } from "next";
 import Header from "../../components/header";
 import TableCar from "../../components/tableCar";
 import Title from "../../components/title";
+import Button from "../../components/core/buttons";
 import {
-  Button,
   Container,
   ContentTextButtonHeader,
   InputContent,
@@ -13,6 +13,7 @@ import {
 } from "./styles";
 import { useEffect, useState } from "react";
 import { fetchAllBrands, IBrandInfo } from "../api/brands";
+import Input from "../../components/core/inputs";
 
 const CarPage: NextPage = () => {
   const [filterPlate, setFilterPlate] = useState<string>("");
@@ -31,15 +32,13 @@ const CarPage: NextPage = () => {
     <>
       <Header />
       <ContentTextButtonHeader>
-        <Title title={"Carros"}></Title>
-        <Button>
-          <Link href="/carros/novo">Novo Carro</Link>
-        </Button>
+        <Title title="Carros" />
+        <Button type="button" path="/carros/novo" texto="Novo Carro" />
       </ContentTextButtonHeader>
       <Container>
         <InputContent>
           <Label>Filtrar por placa</Label>
-          <input
+          <Input
             type="text"
             onChange={(event) => setFilterPlate(event.currentTarget.value)}
           />

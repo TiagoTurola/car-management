@@ -33,14 +33,3 @@ export const Title = styled.h1`
 export const ContentButton = styled.div`
   display: flex;
 `;
-
-export const Button = styled.button`
-  padding: 5px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  color: white;
-  background-color: #279eca;
-  width: 200px;
-  margin: 10px;
-`;
